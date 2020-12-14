@@ -34,8 +34,6 @@ abstract class CurrenciesStore with Store {
 
   final ObservableList<Currency> currencies = ObservableList();
 
-  final Observable<bool> areCurrenciesLoading = Observable(false);
-
   @computed
   double get averageRate {
     if (currencies.isEmpty) return null;
@@ -51,8 +49,6 @@ abstract class CurrenciesStore with Store {
 
   @action
   Future<void> loadCurrencies() async {
-    areCurrenciesLoading.value = true;
-
     final rateData = await _ratesService.getCurrencyRates();
 
     currencies.clear();
@@ -61,8 +57,6 @@ abstract class CurrenciesStore with Store {
         (entry) => Currency(quote: entry.key, rate: entry.value),
       ),
     );
-
-    areCurrenciesLoading.value = false;
   }
 }
 
