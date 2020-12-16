@@ -1,5 +1,6 @@
 import 'package:currency/pages/currency_list_page.dart';
 import 'package:currency/services/currency_rates_service.dart';
+import 'package:currency/widgets/currencies_store_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
@@ -18,12 +19,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Provider(
       create: (_) => CurrencyRatesService(),
-      child: MaterialApp(
-        title: 'Currency',
-        theme: ThemeData(
-          primarySwatch: Colors.deepPurple,
+      child: CurrenciesStoreProvider(
+        child: MaterialApp(
+          title: 'Currency',
+          theme: ThemeData(
+            primarySwatch: Colors.deepPurple,
+          ),
+          home: CurrencyListPage(),
         ),
-        home: CurrencyListPage(),
       ),
     );
   }

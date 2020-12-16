@@ -1,6 +1,5 @@
 import 'package:currency/pages/exchange_page.dart';
 import 'package:currency/stores/currencies_store.dart';
-import 'package:currency/widgets/currencies_store_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -9,13 +8,11 @@ import 'package:provider/provider.dart';
 class CurrencyListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return CurrenciesStoreProvider(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text("Rates"),
-        ),
-        body: _Content(),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Rates"),
       ),
+      body: _Content(),
     );
   }
 }
@@ -53,7 +50,6 @@ class _Content extends StatelessWidget {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (BuildContext context) => ExchangePage(
-                              currenciesStore: store,
                               selectedCurrencyQuote: currency.quote),
                         ),
                       );

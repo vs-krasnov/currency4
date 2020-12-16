@@ -1,4 +1,3 @@
-import 'package:currency/stores/currencies_store.dart';
 import 'package:currency/stores/exchange_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -6,15 +5,12 @@ import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
 class ExchangePage extends StatelessWidget {
-  final CurrenciesStore currenciesStore;
   final String selectedCurrencyQuote;
 
   const ExchangePage({
     Key key,
-    @required this.currenciesStore,
     @required this.selectedCurrencyQuote,
-  })  : assert(currenciesStore != null),
-        assert(selectedCurrencyQuote != null),
+  })  : assert(selectedCurrencyQuote != null),
         super(key: key);
 
   @override
@@ -72,8 +68,8 @@ class _Content extends StatelessWidget {
               ),
               Expanded(
                 child: Text(
-                  "${store.selectedCurrencyQuote}",
                   // TODO выводить результат конвертации
+                  "${store.selectedCurrencyQuote}",
                   style: Theme.of(context).textTheme.subtitle1,
                   textAlign: TextAlign.end,
                 ),
@@ -82,8 +78,8 @@ class _Content extends StatelessWidget {
           ),
           const SizedBox(height: 24),
           Text(
-            "Rate: ₽",
             // TODO выводить актуальный курс обмена для выбранной валюты
+            "Rate: ₽",
             style: Theme.of(context).textTheme.subtitle1,
           ),
         ],

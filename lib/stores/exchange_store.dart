@@ -5,7 +5,7 @@ import 'package:mobx/mobx.dart';
 part 'exchange_store.g.dart';
 
 abstract class ExchangeStore with Store {
-  // TODO Добавить приватное поле CurrenciesStore, чтобы внутри ExchangeStore можно было отслеживать изменения курсов
+  // TODO Добавить приватное свойство CurrenciesStore, чтобы внутри ExchangeStore можно было отслеживать изменения курсов
   final String selectedCurrencyQuote;
 
   ExchangeStore(this.selectedCurrencyQuote)
